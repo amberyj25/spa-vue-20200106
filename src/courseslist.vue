@@ -3,14 +3,16 @@
     <h2>courses</h2>
     <ul v-for="course in courses">
         <div class="lig">
-            <img :src="`./img/${course.img}`"/>
+            <img :src="course.imgr">
             <div class="s">
-                <li>{{course.name}}</li>
+                <li :course.name="course">
+                <router-link :to="{name:'coursedetailid',params:{id:course.id}}">{{course.name}}</router-link>
+                </li>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime libero reiciendis voluptatum velit quod officiis minima in vitae nemo praesentium ullam ut numquam possimus, aliquam ad hic consectetur deserunt? Deleniti?</p>
             </div>
         </div>
+        <div class="clearfix"></div>
     </ul>
-    <div class="clearfix"></div>
 </div>
 </template>
 <script>
@@ -22,13 +24,16 @@ export default {
         return {
             courses:[
                 {
-                    name:"b",
+                    id:1,
+                    name:"basic course",
                     imgr:l1
                 },{
-                    name:"g",
+                    id:2,
+                    name:"good course",
                     imgr:l2
                 },{
-                    name:"h",
+                    id:3,
+                    name:"high course",
                     imgr:l3
                 }
             ]
@@ -44,18 +49,24 @@ export default {
     height:400px;
 }
 img{
-    width: 580px;
+    width: 500px;
     height: 450px;
     float:left;
     margin-bottom:20px;
-    margin-right: 20px; 
-
+    margin-right: 25px; 
 }
 s{
-    width:350px;
-    height:380px;
+    width:380px;
+    height:450px;
+    float: left;
 }
 .clearfix{
     clear:both
+}
+ul{
+    list-style-type: none;
+}
+li{
+    font-size:50px;
 }
 </style>
